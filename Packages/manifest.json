@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.meta.movement": "https://github.com/oculus-samples/Unity-Movement.git#v3.1.1",
+    "com.meta.xr.depthapi": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
+    "com.meta.xr.depthapi.urp": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi.urp",
     "com.meta.xr.sdk.all": "66.0.0",
     "com.meta.xr.sdk.voice": "66.0.0",
     "com.unity.collab-proxy": "2.6.0",
