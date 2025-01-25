@@ -7,13 +7,22 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: Assets/Scenes/TestingScene.unity
     guid: b5c6dc2d4c686b3469ac5734a7090d7c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GunScene.unity
     guid: 3ba24b494fffc1642ab4ff810621ccea
+  - enabled: 0
+    path: Assets/Scenes/DevScene.unity
+    guid: 935b7d4e9b47d07459b8c618632f6946
+  - enabled: 1
+    path: Assets/_Core/Scenes/BuildingBlocksVersion2.unity
+    guid: ccd8fc652599c43468c8ac9d7c2a3311
+  - enabled: 0
+    path: Assets/_Core/Scenes/BubbleShooter.unity
+    guid: b5fb6e8455044d74594067013486c00f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fdded73bff4a9fe49a080d9c7098c543,
       type: 2}

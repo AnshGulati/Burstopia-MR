@@ -1,74 +1,134 @@
+using System.Collections;
+using System.Collections.Generic;
+using GorillaZilla;
 using UnityEngine;
-
 public class ShooterBot : MonoBehaviour
 {
-    public Animator animator;
-    public GameObject bubblePrefab;
-    public Transform shootPoint; 
+    public float lookSpeed = 1;
+    public Transform shootPoint;
+    public float fireRate;
+    public float fireTimer;
     public float bubbleSpeed = 5f;
-    public float shootingInterval = 2f;
+    public GameObject bubblePrefab;
+    public LayerMask laserLayer;
+    public bool canAttack = true;
+    public Animator animator;
+
+    // Health System
+    public int health = 100;
+    public int damage = 25;
+    public Material characterMaterial;
+    public Color flashColor = Color.red;
+    public float flashDuration = 0.2f;
+    private Color originalEmissionColor;
+    public int maxHealth = 100;
+    public HealthBar healthBar;
 
     public GameObject enemyPrefab;
+    public bool damageOnCollision = true;
+    public LayerMask collideLayer;
+    public GameObject bubbleParticlePrefab;
+    public ParticleSystem bubbleJetpack;
 
-    private bool canShoot = true;
-
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A)) // Shooting
+        // Store original emission color
+        if (characterMaterial.HasProperty("_EmissionColor"))
         {
-            ShootBubble();
+            originalEmissionColor = characterMaterial.GetColor("_EmissionColor");
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) // Hurt
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth); // Set initial health
+    }
+
+    private void Awake()
+    {
+        bubbleJetpack.Play();
+        fireTimer = fireRate;
+    }
+    void FixedUpdate()
+    {
+        LookAtPlayer();
+        if(canAttack)
         {
-            PlayHurtAnimation();
+                if (fireTimer >= fireRate)
+                {
+                    FireBullet();
+                    fireTimer = 0;
+                }
+                fireTimer += Time.fixedDeltaTime;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.W)) // Death
+    private void OnCollisionEnter(Collision other)
+    {
+        if (!damageOnCollision) return;
+        if (collideLayer.Contains(other.gameObject.layer))
         {
-            PlayDeathAnimation();
+            TakeDamage();
         }
     }
 
-    void ShootBubble()
-    {
-    if (!canShoot) return;
-
-    animator.ResetTrigger("ShootTrigger");
-    animator.SetTrigger("ShootTrigger");
-
-    GameObject bubble = Instantiate(bubblePrefab, transform.position, transform.rotation);
-
-    bubble.transform.SetParent(transform);
-
-    Rigidbody rb = bubble.GetComponent<Rigidbody>();
-    if (rb != null)
-    {
-        rb.velocity = transform.forward * bubbleSpeed;
-    }
-
-    Destroy(bubble, 6f); 
-
-    canShoot = false;
-    Invoke(nameof(ResetShooting), shootingInterval);
-    }
-
-
-    void ResetShooting()
-    {
-        canShoot = true;
-    }
-
-    void PlayHurtAnimation()
+    private void TakeDamage()
     {
         animator.ResetTrigger("HurtTrigger");
         animator.SetTrigger("HurtTrigger");
+        health -= damage;
+        healthBar.SetHealth(health);
+        StartCoroutine(FlashDamageEffect());
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
-    void PlayDeathAnimation()
+    private void Die()
     {
         animator.ResetTrigger("DeathTrigger");
         animator.SetTrigger("DeathTrigger");
-        enemyPrefab.SetActive(false);
+        bubbleJetpack.Stop();
+
+        if (bubbleParticlePrefab != null)
+        {
+            var particle = Instantiate(bubbleParticlePrefab, transform.position, transform.rotation);
+            particle.transform.localScale = Vector3.one * .05f;
+        }
+
+        Destroy(gameObject);
+        healthBar.gameObject.SetActive(false);
+    }
+
+    void LookAtPlayer()
+    {
+        Transform playerHead = Camera.main.transform;
+        Vector3 headPos = playerHead.position;
+        Quaternion targetRotation = Quaternion.LookRotation(headPos - transform.position, Vector3.up);
+        Quaternion curRotation = shootPoint.rotation;
+        //turretHead.LookAt(playerHead);
+        //Quaternion targetRotation = turretHead.rotation;
+        shootPoint.rotation = Quaternion.Slerp(curRotation, targetRotation, Time.fixedDeltaTime * lookSpeed);
+    }
+
+    void FireBullet()
+    {
+        if (!canAttack) return;
+        animator.ResetTrigger("ShootTrigger");
+        animator.SetTrigger("ShootTrigger");
+
+        Vector3 spawnPoint = shootPoint.position + shootPoint.forward * .1f;
+        var bulletGO = Instantiate(bubblePrefab, spawnPoint, shootPoint.rotation, transform);
+        bulletGO.GetComponent<Rigidbody>().AddForce(shootPoint.forward * bubbleSpeed);
+        Destroy(bulletGO, 10f);
+    }
+
+    IEnumerator FlashDamageEffect()
+    {
+        if (characterMaterial.HasProperty("_EmissionColor"))
+        {
+            characterMaterial.SetColor("_EmissionColor", flashColor * 3f); // Increase intensity
+        }
+        yield return new WaitForSeconds(flashDuration);
+        characterMaterial.SetColor("_EmissionColor", originalEmissionColor); // Reset to normal
     }
 }

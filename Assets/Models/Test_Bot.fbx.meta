@@ -3,12 +3,22 @@ guid: 03d70cb82fdf96841bbffb359a1d4e62
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShootingBot_Body_Mat
+    second: {fileID: 2100000, guid: 6421efcc5ffae9647bd442d38e714525, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Shooter_Robot_Diffuse
+    second: {fileID: 2800000, guid: 0c816308e174ac0478137cb5b3d8f10c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

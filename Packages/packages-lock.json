@@ -10,24 +10,6 @@
       },
       "hash": "9aaa97bb29d6771cdbc330adb6b3f26167eb14ad"
     },
-    "com.meta.xr.depthapi": {
-      "version": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.xr.oculus": "4.2.0"
-      },
-      "hash": "2a12de399fba2e87a47dd882116330fbd504a3af"
-    },
-    "com.meta.xr.depthapi.urp": {
-      "version": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi.urp",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.xr.oculus": "4.2.0"
-      },
-      "hash": "2a12de399fba2e87a47dd882116330fbd504a3af"
-    },
     "com.meta.xr.mrutilitykit": {
       "version": "66.0.0",
       "depth": 1,
@@ -374,8 +356,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.oculus": {
-      "version": "4.2.0",
-      "depth": 1,
+      "version": "4.1.2",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.4.0"
