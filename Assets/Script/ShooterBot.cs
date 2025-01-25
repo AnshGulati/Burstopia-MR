@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShooterBot : MonoBehaviour
 {
     public float lookSpeed = 1;
-    public Transform shootPoint;
-    public float fireRate;
+    //public Transform shootPoint;
+    //public float fireRate;
     public float fireTimer;
     public float bubbleSpeed = 5f;
     public GameObject bubblePrefab;
@@ -30,6 +30,12 @@ public class ShooterBot : MonoBehaviour
     public GameObject bubbleParticlePrefab;
     public ParticleSystem bubbleJetpack;
 
+    // New tranforms
+    public Transform shootPoint;  // Shooting point (for firing direction)
+    public Transform pivot;  // Pivot point (for rotating the enemy body)
+    public float initialDelay = 6f; // Delay before the first shot
+    public float subsequentFireRate = 3f; // Rate after the first shot (3 seconds)
+
     private void Start()
     {
         // Store original emission color
@@ -45,14 +51,14 @@ public class ShooterBot : MonoBehaviour
     private void Awake()
     {
         bubbleJetpack.Play();
-        fireTimer = fireRate;
+        fireTimer = initialDelay;
     }
     void FixedUpdate()
     {
         LookAtPlayer();
         if(canAttack)
         {
-                if (fireTimer >= fireRate)
+                if (fireTimer >= initialDelay + subsequentFireRate)
                 {
                     FireBullet();
                     fireTimer = 0;
@@ -103,11 +109,26 @@ public class ShooterBot : MonoBehaviour
     {
         Transform playerHead = Camera.main.transform;
         Vector3 headPos = playerHead.position;
-        Quaternion targetRotation = Quaternion.LookRotation(headPos - transform.position, Vector3.up);
-        Quaternion curRotation = shootPoint.rotation;
-        //turretHead.LookAt(playerHead);
-        //Quaternion targetRotation = turretHead.rotation;
-        shootPoint.rotation = Quaternion.Slerp(curRotation, targetRotation, Time.fixedDeltaTime * lookSpeed);
+
+        // Calculate the direction to the player
+        Vector3 directionToPlayer = headPos - transform.position;
+
+        // Ensure we only rotate along the Y-axis (keeping the rotation flat)
+        //directionToPlayer.y = 0; // Remove any vertical offset for proper rotation
+
+        // If there's still some direction to the player, rotate towards the player
+
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+            Quaternion curRotation = pivot.rotation;
+            //turretHead.LookAt(playerHead);
+            //Quaternion targetRotation = turretHead.rotation;
+            pivot.rotation = Quaternion.Slerp(curRotation, targetRotation, Time.fixedDeltaTime * lookSpeed);
+
+            // New Changes
+            // Adjust shooting direction (shootPoint) towards the player
+            Vector3 shootDirection = headPos - shootPoint.position;
+            //shootDirection.y = 0; // Prevent any vertical offset
+            shootPoint.rotation = Quaternion.LookRotation(shootDirection, Vector3.up); // Rotate shoot point to face the player
     }
 
     void FireBullet()

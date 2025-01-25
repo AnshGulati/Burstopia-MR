@@ -12,28 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7c380ad5af56d459d805bc547cfb53, type: 3}
   m_Name: Wave (Template)
   m_EditorClassIdentifier: 
-  numBuildings: 10
-  numEnemies: 4
+  numBuildings: 7
+  numEnemies: 0
   buildings:
-  - prefab: {fileID: 1344574636070800674, guid: cede86de5ff7d524fb75f2f420e71095,
-      type: 3}
-    weightedSpawnProbabilty: 3
-  - prefab: {fileID: 1344574636070800674, guid: 92470e7f381aaad49bd6d1c03196e60e,
-      type: 3}
-    weightedSpawnProbabilty: 3
-  - prefab: {fileID: 1344574636070800674, guid: e590954b2b91a7d46871f8d5679e6be2,
-      type: 3}
-    weightedSpawnProbabilty: 3
   - prefab: {fileID: 8763843849077988315, guid: bbc00c576a9341d469a80fdec775b328,
       type: 3}
     weightedSpawnProbabilty: 3
-  enemies:
-  - prefab: {fileID: 2896942873597677670, guid: f65fbc7f1378755409c56aba3cb590b3,
-      type: 3}
-    weightedSpawnProbabilty: 5
-  - prefab: {fileID: 7932834636276431629, guid: 02c916bd3100a7046b501bbccc74fa4b,
-      type: 3}
-    weightedSpawnProbabilty: 1
+  enemies: []
   powerUpBuilding:
     prefab: {fileID: 6771171304812718274, guid: e823b97193a29ba4f92e96e4ba3e8aaa,
       type: 3}
