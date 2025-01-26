@@ -4074,7 +4074,7 @@ PrefabInstance:
     - target: {fileID: 455499759859708962, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
       propertyPath: bodyPart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 527601085650921004, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
@@ -5324,7 +5324,7 @@ PrefabInstance:
     - target: {fileID: 5307446432023627463, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
       propertyPath: m_TagString
-      value: Hand
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5404856500676943854, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
@@ -5653,7 +5653,7 @@ PrefabInstance:
     - target: {fileID: 6534866428489683621, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
       propertyPath: m_TagString
-      value: Hand
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6600936427883683705, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
@@ -5743,7 +5743,7 @@ PrefabInstance:
     - target: {fileID: 6636984604169892603, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}
       propertyPath: bodyPart
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6773965462213696181, guid: 6139fe0262e71604b8d2ef85ee7caef5,
         type: 3}

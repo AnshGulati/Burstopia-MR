@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7c380ad5af56d459d805bc547cfb53, type: 3}
   m_Name: Wave (Template)
   m_EditorClassIdentifier: 
-  numBuildings: 2
+  numBuildings: 8
   numEnemies: 0
   buildings:
+  - prefab: {fileID: 1344574636070800674, guid: cede86de5ff7d524fb75f2f420e71095,
+      type: 3}
+    weightedSpawnProbabilty: 3
+  - prefab: {fileID: 1344574636070800674, guid: 92470e7f381aaad49bd6d1c03196e60e,
+      type: 3}
+    weightedSpawnProbabilty: 3
   - prefab: {fileID: 8763843849077988315, guid: bbc00c576a9341d469a80fdec775b328,
       type: 3}
     weightedSpawnProbabilty: 3

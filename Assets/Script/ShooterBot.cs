@@ -76,10 +76,10 @@ public class ShooterBot : MonoBehaviour
         if (!destroyOnCollision) return;
         if (collideLayer.Contains(other.gameObject.layer))
         {
-            //TakeDamage();
+            TakeDamage();
             //Die();
-            Destroy(gameObject);
-            die.Play();
+            //Destroy(gameObject);
+            //die.Play();
         }
     }
 

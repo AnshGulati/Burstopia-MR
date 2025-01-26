@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Helicopter : MonoBehaviour
 {
-    public Transform rudder;
+    //public Transform rudder;
     public LayerMask playerLayer;
     Transform player;
-    public float rutterSpeed = 1000;
+    //public float rutterSpeed = 1000;
     public float movementSpeed;
     public float rotatationSpeed;
     public float upForce = .1f;
@@ -22,7 +22,7 @@ public class Helicopter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rudder.Rotate(Vector3.up * rutterSpeed * Time.fixedDeltaTime);
+        //rudder.Rotate(Vector3.up * rutterSpeed * Time.fixedDeltaTime);
         var rb = GetComponent<Rigidbody>();
 
         Vector3 forward = player.position - transform.position;

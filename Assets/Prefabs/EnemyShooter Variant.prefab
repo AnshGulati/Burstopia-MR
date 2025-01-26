@@ -1218,9 +1218,6 @@ MonoBehaviour:
   flashDuration: 0.2
   maxHealth: 100
   healthBar: {fileID: 4098632741956356887}
-  collideLayer:
-    serializedVersion: 2
-    m_Bits: 513
   bubbleParticlePrefab: {fileID: 1996169253256878526, guid: f7b86dd11d8c20045a21636facf39a64,
     type: 3}
   bubbleJetpack: {fileID: 2588664323092612361}
@@ -1232,6 +1229,9 @@ MonoBehaviour:
   die: {fileID: 1694113019727313809}
   jetpackSound: {fileID: 1660853360983791344}
   enemyPrefab: {fileID: 8763843849077988315}
+  collideLayer:
+    serializedVersion: 2
+    m_Bits: 513
 --- !u!114 &9197446183707789186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,7 +1651,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
