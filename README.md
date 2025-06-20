@@ -1,4 +1,4 @@
-# Global-Game-Jam-2025
+# Burstopia - Mixed Reality Game
 This repository contains a Mixed Reality Game Project made using Unity Engine which We made during our 48-hours Global Game Jam 2025.
 
 # Drive Link for Video Demonstration
