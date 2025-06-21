@@ -1,7 +1,10 @@
 # Burstopia - Mixed Reality Game
 
 ## Drive Link for Video Demonstration
-https://drive.google.com/file/d/1agndCJ5xVjVHWy3UGTfh7VBCa8KICcuU/view?usp=drive_link
+<a target="_blank" href="https://drive.google.com/file/d/1agndCJ5xVjVHWy3UGTfh7VBCa8KICcuU/view?usp=drive_link">Burstopia-MR Video Link</a>
+
+https://github.com/user-attachments/assets/f53a8d55-0f1e-47b4-b3dc-fabd409a4afa
+
 
 ## 🚀 Overview
 Burstopia MR is an action-packed Mixed Reality (MR) game that transforms your real-world surroundings into a high-stakes battlefield. In this thrilling, hands-free experience, enemies invade your space by launching bubbles—both a threat and your weapon of redemption. With dynamic hand tracking, scene-aware object spawning, and powerful voice-activated attacks, Burstopia delivers a physically engaging and immersive gaming adventure where your own reflexes and voice determine the fate of your world.
